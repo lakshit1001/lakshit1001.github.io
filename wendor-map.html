@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wendor Machines and their Locations</title>
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wendor Machines and their Locations</h1>
+    <div id="map"></div>
+
+    <script>
+        // Define the JSON object containing location data
+        var locations =         [
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1625/?tab=details",
+    "name": "Kaanan Enterprises 2",
+    "machine_status": "running",
+    "latitude": 22.806656,
+    "longitude": 86.171387
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1341/?tab=details",
+    "name": "37RR-VNVS",
+    "machine_status": "running",
+    "latitude": 28.492115,
+    "longitude": 77.023552
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1512/?tab=details",
+    "name": "Maa Sheetla",
+    "machine_status": "running",
+    "latitude": 28.452091,
+    "longitude": 75
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1708/?tab=details",
+    "name": "DM1_EV2",
+    "machine_status": "running",
+    "latitude": 25.275095,
+    "longitude": 55.387661
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1713/?tab=details",
+    "name": "DM1_EV1",
+    "machine_status": "running",
+    "latitude": 25.275095,
+    "longitude": 55.387661
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1479/?tab=details",
+    "name": "Atlas-JECRC CAFETERIA",
+    "machine_status": "running",
+    "latitude": 26.775494,
+    "longitude": 75.87606
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1409/?tab=details",
+    "name": "lokam 02",
+    "machine_status": "running",
+    "latitude": 27.089941,
+    "longitude": 93.57235
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1472/?tab=details",
+    "name": "Highness Construction 02",
+    "machine_status": "running",
+    "latitude": 26.848623,
+    "longitude": 80.802429
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1638/?tab=details",
+    "name": "HUNGRY TEXAN 2",
+    "machine_status": "running",
+    "latitude": 17.442499,
+    "longitude": 78.380501
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1491/?tab=details",
+    "name": "VB-29-Oberoi Wildflower",
+    "machine_status": "running",
+    "latitude": 31.113937,
+    "longitude": 77.245483
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1484/?tab=details",
+    "name": "Homeland(Atlas-2)",
+    "machine_status": "running",
+    "latitude": 31.049995,
+    "longitude": 74.377602
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1810/?tab=details",
+    "name": "DST NAFED",
+    "machine_status": "running",
+    "latitude": 28.643051,
+    "longitude": 77.132179
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1395/?tab=details",
+    "name": "Eidho-02",
+    "machine_status": "running",
+    "latitude": 32.711811,
+    "longitude": 74.878822
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1335/?tab=details",
+    "name": "VB-25-MGU-01",
+    "machine_status": "running",
+    "latitude": 26.274046,
+    "longitude": 72.936195
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1284/?tab=details",
+    "name": "VB-Celebal Mansarovar",
+    "machine_status": "running",
+    "latitude": 26.834518,
+    "longitude": 75.776947
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1286/?tab=details",
+    "name": "VB-19-JECRC BH-1",
+    "machine_status": "running",
+    "latitude": 26.825438,
+    "longitude": 75.803749
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1617/?tab=details",
+    "name": "HUNGRY TEXAN 1",
+    "machine_status": "running",
+    "latitude": 17.442499,
+    "longitude": 78.380501
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1130/?tab=details",
+    "name": "Eidho-01",
+    "machine_status": "running",
+    "latitude": 32.711811,
+    "longitude": 74.878822
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1191/?tab=details",
+    "name": "VB-11-Celebal technologies",
+    "machine_status": "running",
+    "latitude": 26.843498,
+    "longitude": 75.800148
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1425/?tab=details",
+    "name": "Lakshay Solution (Rohtak)",
+    "machine_status": "running",
+    "latitude": 28.901777,
+    "longitude": 76.549614
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1398/?tab=details",
+    "name": "Gurukul Pratibha",
+    "machine_status": "running",
+    "latitude": 25.200653,
+    "longitude": 75
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1052/?tab=details",
+    "name": "SC02 Sarangi Company",
+    "machine_status": "running",
+    "latitude": 22.786278,
+    "longitude": 85.938164
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1320/?tab=details",
+    "name": "Trident Udaipur",
+    "machine_status": "running",
+    "latitude": 24.577112,
+    "longitude": 73.667503
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1636/?tab=details",
+    "name": "HUNGRY TEXAN 4",
+    "machine_status": "running",
+    "latitude": 17.442509,
+    "longitude": 78.380478
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1415/?tab=details",
+    "name": "DSP-VM-002 (SPLASH BI)",
+    "machine_status": "running",
+    "latitude": 26.906677,
+    "longitude": 75.831535
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1148/?tab=details",
+    "name": "VB-07-Byjus Wtp",
+    "machine_status": "running",
+    "latitude": 26.854191,
+    "longitude": 75.803291
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1567/?tab=details",
+    "name": "Niti Ayog(Nafed)",
+    "machine_status": "running",
+    "latitude": 28.622099,
+    "longitude": 77.210258
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1467/?tab=details",
+    "name": "IIT JP Physics Lab",
+    "machine_status": "running",
+    "latitude": 26.860678,
+    "longitude": 75.793793
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1204/?tab=details",
+    "name": "Wuerth Valeo",
+    "machine_status": "running",
+    "latitude": 28.62067,
+    "longitude": 76
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1696/?tab=details",
+    "name": "Samresh 01",
+    "machine_status": "running",
+    "latitude": 22.712456,
+    "longitude": 75
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1590/?tab=details",
+    "name": "pinnacle 1",
+    "machine_status": "running",
+    "latitude": 18.530043,
+    "longitude": 73.844276
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1247/?tab=details",
+    "name": "SC10 Sarangi company (titan )",
+    "machine_status": "running",
+    "latitude": 22.786278,
+    "longitude": 85.938164
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1701/?tab=details",
+    "name": "M2 vending (gurgaon)",
+    "machine_status": "running",
+    "latitude": 28.479841,
+    "longitude": 77.09169
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1477/?tab=details",
+    "name": "SC10 Sarangi company",
+    "machine_status": "running",
+    "latitude": 22.786278,
+    "longitude": 85.938164
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1279/?tab=details",
+    "name": "The Oberoi Hotel",
+    "machine_status": "running",
+    "latitude": 28.502203,
+    "longitude": 74
+  },
+  {
+    "website": "https://admin.wendor.in/dashboard/machines/1569/?tab=details",
+    "name": "Shastri Bhawan Nafed",
+    "machine_status": "running",
+    "latitude": 28.61639,
+    "longitude": 77.212837
+  }
+];
+
+        function initMap() {
+            // Create a new map instance
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 31.113937, lng: 77.245483 },
+                zoom: 6
+            });
+
+            // Loop through the locations and add markers with popups to the map
+            locations.forEach(function (location) {
+                var position = new google.maps.LatLng(location.latitude, location.longitude);
+
+                var marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: location.name
+                });
+
+                // Create the content for the popup
+                var contentString = '<div>' +
+                    '<h3>' + location.name + '</h3>' +
+                    '<p><a href="' + location.website + '" target="_blank">Visit Website</a></p>' +
+                    '</div>';
+
+                // Create the popup window
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                // Add a click event listener to the marker
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            });
+        }
+    </script>
+
+    <!-- Load the Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxRUUIpu6cDv7L--2qtQ35cyjnrejTaAc&callback=initMap" async defer></script>
+</body>
+</html>
